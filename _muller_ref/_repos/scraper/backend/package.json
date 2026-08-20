@@ -1,0 +1,23 @@
+{
+  "name": "scrapper-hybrid-backend",
+  "version": "1.0.0",
+  "description": "Hybrid web scraper backend combining Readability article extraction with multi-mode scraping",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js"
+  },
+  "dependencies": {
+    "axios": "^1.7.9",
+    "cheerio": "^1.0.0",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "mongoose": "^8.9.5",
+    "morgan": "^1.10.0",
+    "@mozilla/readability": "^0.5.0",
+    "linkedom": "^0.18.10",
+    "pdf-parse": "^1.1.1",
+    "archiver": "^7.0.1"
+  }
+}

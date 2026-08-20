@@ -1,0 +1,11 @@
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+sqlalchemy>=2.0
+asyncpg
+redis>=5.0
+argon2-cffi
+python-jose[cryptography]
+httpx
+pydantic>=2.0
+pydantic-settings
+email-validator

@@ -1,0 +1,48 @@
+:80 {
+    # ── Frontend SPA ──
+    handle /assets/* {
+        reverse_proxy frontend:80
+    }
+
+    handle /api/auth/* {
+        reverse_proxy auth_service:8000
+    }
+
+    handle /api/catalog/* {
+        reverse_proxy catalog_service:8000
+    }
+
+    handle /api/reader/* {
+        reverse_proxy reader_service:8000
+    }
+
+    handle /api/social/* {
+        reverse_proxy social_service:8000
+    }
+
+    # Match both the collection endpoint and nested notification routes.
+    @notifications path /api/notifications /api/notifications/*
+    handle @notifications {
+        reverse_proxy social_service:8000
+    }
+
+    # Image token refresh (handled by reader_service)
+    handle /api/token/* {
+        reverse_proxy reader_service:8000
+    }
+
+    # Signed image URLs
+    handle /images/* {
+        reverse_proxy image_service:8000
+    }
+
+    # Admin upload proxy → image_service
+    handle /api/upload/* {
+        reverse_proxy image_service:8000
+    }
+
+    # Everything else → frontend SPA
+    handle {
+        reverse_proxy frontend:80
+    }
+}
